@@ -1,3 +1,23 @@
+# react-quiz-app
+
+react-quiz-app is a ReactJS app which puts up an arithmetic quiz. The user can choose how many questions (s)he wants to attempt, the range of the operands and the operators as well.
+
+## Installation
+
+Use the package manager [npm](https://www.npmjs.com/) to install the required dependencies listed in package.json / package-lock.json file(s) . Navigate to the root dir of the project, open the terminal and do :
+
+```bash
+npm install
+```
+
+After this, do :
+```bash
+npm start
+```
+and the app should start on [localhost](http://localhost:3000) .
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
