@@ -1,8 +1,11 @@
-.error-msg{
+.error-msg {
     color: red;
     font-size: 14px;
 }
-.top-margin{
+.header {
+    margin-bottom: 10px;
+}
+.top-margin {
     margin-top: 15px;
 }
 .question {

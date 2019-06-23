@@ -84,10 +84,10 @@ export class Starter extends React.Component {
     render() {
         return (
             <div>
-                <h2>Initial Selections</h2>
+                <h4>Initial Selections</h4>
                 <form onSubmit = {this.onFormSubmit}>
 
-                    {/* range input ----------------------------*/}
+                    {/* range input */}
                     <label className="top-margin">Operands : </label>
                     <div className="input-group">
                         <div className="input-group-prepend">
@@ -109,7 +109,7 @@ export class Starter extends React.Component {
                             <div className = "error-msg">{this.state.errors.operandsError}</div>
                     }
 
-                    {/* operators checkbox ----------------------------*/}
+                    {/* operators checkbox */}
                     <label className="top-margin">Operators : </label>
                     <div>
                         <Checkboxes 
@@ -136,6 +136,7 @@ export class Starter extends React.Component {
                             <div className = "error-msg">{this.state.errors.totalQuestionCountError}</div>
                     }
 
+                    {/* Instructions List */}
                     <p className = "top-margin instructions">Instructions : </p>
                     <ul>
                         <li>There is no negative marking.</li>
@@ -144,7 +145,8 @@ export class Starter extends React.Component {
                         <li>See your current score in the bottom pane of the quiz.</li>
                         <li>Results will be displayed at the very end of the quiz.</li>
                     </ul>
-                    {/* Create button ------------------------------*/}
+
+                    {/* Start button */}
                     <button type="submit" className="top-margin btn btn-outline-success">Start Quiz</button>
                 
                 </form>

@@ -44,6 +44,8 @@ export class App extends React.Component{
                 <div className = "row">
                     <div className = "col-sm-3"></div>
                     <div className = "col-sm-6">
+                        <h3 className="text-center header">Arithmetic Quiz</h3>
+                        <hr/>
                         {component}
                     </div>
                     <div className = "col-sm-3"></div>
