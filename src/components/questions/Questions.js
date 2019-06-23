@@ -19,7 +19,7 @@ export class Questions extends React.Component {
     getRandomNumber = () => {
         let min = this.props.quizOperandRange.rangeLowerBound
         let max = this.props.quizOperandRange.rangeUpperBound
-        return Math.floor( Math.random() * (max) + min);
+        return Math.floor( Math.random() * (max - min + 1) ) + min;
     }
 
     componentDidMount() {
@@ -69,10 +69,24 @@ export class Questions extends React.Component {
         let operator = selectedOperators[ Math.floor(Math.random()*selectedOperators.length) ];
         let exp = `${leftOperand} ${operator} ${rightOperand}`
         let answer = eval(exp);
+        let finalAnswer;
+        //if the answer has a decimal place in it then fix the answer to two decimal places
+        //a decimal would be there only in the case of division (/)
+        if(exp.includes('/') && answer.toString().includes('.')) {
+            answer = answer.toFixed(2);
+            
+            finalAnswer = answer.toString();
+            if(finalAnswer[finalAnswer.length - 1] === '0') {
+                finalAnswer = finalAnswer.substring(0, finalAnswer.length - 1);
+            }
+        } else {
+            finalAnswer = answer.toString();
+        }
+        
         let questionObj = {
             expressionString : exp,
             attemptedAnswer : null,
-            correctAnswer : answer.toString(),
+            correctAnswer : finalAnswer,
             correct : false
         }
         this.setState({
@@ -85,12 +99,14 @@ export class Questions extends React.Component {
 
     render() {
         const {currentQuestionCount, answer, score, questionsArray, resultsFlag, points} = this.state;
+        const {totalQuestionCount} = this.props;
         const currentQuestionIndex = currentQuestionCount - 1;
         let component = currentQuestionCount ? (
             <div className = "quiz">
                 <div className = "question">
-                    <h4>Question {currentQuestionCount} — </h4>
+                    <h4>Question {currentQuestionCount} of {totalQuestionCount} - </h4>
                     <p>Evaluate this : {questionsArray[currentQuestionIndex].expressionString}</p>
+                    
                     <form onSubmit={this.handleAnswerSubmit}>
                         <input
                             type = "number"
@@ -99,21 +115,29 @@ export class Questions extends React.Component {
                             placeholder = "Answer"
                             onChange = {(e) => this.setAnswer(e.target.value)}
                         />
-                        <button type="submit" className="top-margin btn btn-outline-success">
+                        {
+                            questionsArray[currentQuestionIndex].expressionString.includes('/') &&
+                                <p className = "division-help">
+                                    Write your answer up to two decimal places (If necessary)
+                                </p>
+                        }
+                        <button type="submit" className="top-margin btn btn-outline-primary">
                             {
-                                currentQuestionCount < this.props.totalQuestionCount ? 
+                                currentQuestionCount < totalQuestionCount ? 
                                 "Submit and Next" : "Submit and Finish"
                             }
                         </button>
                     </form>
                 </div>
-                <hr/>
                 <div className = "score-card">
+                    <hr/>
                     <p>Score : {score}</p>
                 </div>
             </div>
             
-        )  : <h3> Loading Quiz.... </h3>
+        )  : <h4> Loading Quiz.. </h4>
+        //if the result flag is true it means that the last question has just submitted by the 
+        //user so show the Results component
         if(resultsFlag === true) {
             component = <Results 
                 questionsArray = {questionsArray} 

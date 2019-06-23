@@ -1,6 +1,8 @@
 import React from 'react';
 import {Starter} from './initialSelection/Starter';
 import {Questions} from './questions/Questions';
+import '../assets/css/styles.css';
+
 export class App extends React.Component{
     state = {
         starter : true,

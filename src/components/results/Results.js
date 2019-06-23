@@ -3,9 +3,20 @@ import React from 'react'
 export const Results = ({questionsArray, score, maxScore, handleRetakeQuiz}) => {
     return(
         <div>
-            <h4>Results are here !</h4>
-            <p>Score : {score} out of {maxScore}</p>
-            <button className = "btn btn-outline-success" onClick = {handleRetakeQuiz}>Retake Quiz</button>
+            <div className = "row">
+                <div className ="col-sm-8">
+                    <h4>Results are here !</h4>
+                    <p>Score : {score} out of {maxScore}</p>
+                </div>
+                <div className ="text-right col-sm-4">
+                    <button className = "btn btn-outline-success btn-block" 
+                        onClick = {handleRetakeQuiz}>
+                        Retake Quiz
+                    </button>
+                </div>
+            </div>
+            
+            
             {
                 questionsArray.map((questionObj, index) => {
                     return (

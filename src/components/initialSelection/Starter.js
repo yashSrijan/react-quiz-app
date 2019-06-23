@@ -136,6 +136,14 @@ export class Starter extends React.Component {
                             <div className = "error-msg">{this.state.errors.totalQuestionCountError}</div>
                     }
 
+                    <p className = "top-margin instructions">Instructions : </p>
+                    <ul>
+                        <li>There is no negative marking.</li>
+                        <li>5 points will be earned for every correct answer.</li>
+                        <li>Answers once submitted, can't be edited.</li>
+                        <li>See your current score in the bottom pane of the quiz.</li>
+                        <li>Results will be displayed at the very end of the quiz.</li>
+                    </ul>
                     {/* Create button ------------------------------*/}
                     <button type="submit" className="top-margin btn btn-outline-success">Start Quiz</button>
                 

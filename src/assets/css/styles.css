@@ -1,0 +1,39 @@
+.error-msg{
+    color: red;
+    font-size: 14px;
+}
+.top-margin{
+    margin-top: 15px;
+}
+.question {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+    padding : 10px 20px;
+    margin: 15px 0;
+    box-sizing: border-box;
+}
+.result-question {
+    padding : 10px 20px;
+    border-radius : 5px;
+    box-sizing: border-box;
+    margin: 15px 0;
+}
+.correct {
+    background: rgba(0, 255, 0, 0.171);
+}
+.incorrect {
+    background: rgba(255, 0, 0, 0.185);
+}
+.division-help {
+    color: gray;
+    font-size: 14px;
+}
+.score-card {
+    margin-top: 20px;
+    color: #147798;
+    font-weight: 500;
+}
+.instructions {
+    margin-bottom: 5px;
+}
